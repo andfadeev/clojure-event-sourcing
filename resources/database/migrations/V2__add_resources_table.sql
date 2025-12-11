@@ -1,6 +1,6 @@
 CREATE TABLE resources
 (
-    id            BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    id            UUID PRIMARY KEY     DEFAULT gen_random_uuid(),
     type          TEXT        NOT NULL,
     payload       JSONB       NOT NULL,
     last_event_id BIGINT      NOT NULL DEFAULT 0,
