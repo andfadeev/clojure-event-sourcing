@@ -73,22 +73,22 @@
 
     (testing "can get order by id and project events to a resource"
       (is (match? {:items ["x" "y" "z"]
-                   :order_id order-id
+                   :order_id (str order-id)
                    :payment_method "CARD"
                    :price "100.45"
                    :customer_id customer-id
                    :resource_type "Order"
                    :status "dispatched"
-                   :updated_at inst?
-                   :created_at inst?
+                   :updated_at string?
+                   :created_at string?
                    :tracking_number string?} (core/get-events-by-aggregate-id *deps* order-id)))
       (is (match? {:items ["something"]
-                   :order_id other-order-id
+                   :order_id (str other-order-id)
                    :customer_id customer-id
                    :price "99.99"
                    :resource_type "Order"
                    :status "pending"
-                   :created_at inst?}
+                   :created_at string?}
                   (core/get-events-by-aggregate-id *deps* other-order-id))))))
 
 (def OrderResourceSchema
